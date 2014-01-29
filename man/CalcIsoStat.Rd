@@ -1,64 +1,11 @@
 \name{CalcIsoStat}
 \alias{CalcIsoStat}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-}
-\description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-}
+\title{Caculate ISometrics statistic}
 \usage{
 CalcIsoStat(mat.list, Stat)
 }
-%- maybe also 'usage' for other objects documented here.
-\arguments{
-  \item{mat.list}{
-%%     ~~Describe \code{mat.list} here~~
-}
-  \item{Stat}{
-%%     ~~Describe \code{Stat} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+\description{
+Calculates a statistic in the isometric direction given a
+matrix list and a function
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (mat.list, Stat) 
-{
-    betas = rep(c(1, 0), each = dim(mat.list[[1]])[1]/2)
-    betas = Normalize(betas)
-    out = lapply(mat.list, function(mat) Stat(betas, mat))
-    return(unlist(out))
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
