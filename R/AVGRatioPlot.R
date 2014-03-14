@@ -2,6 +2,7 @@
 #'
 #'Plots AVGRatio output
 #'@export
+#'@import ggplot2 reshape2 plyr
 AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2){
   avg <- ldply(pop.list, function(x) AVGRatio(x$p.cor, x$selection.strength, num.cores = num.cores), .progress = 'text')
   names(avg)[6] = "Avg_Ratio"
