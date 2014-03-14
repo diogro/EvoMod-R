@@ -3,8 +3,8 @@
 #'Plots AVGRatio output
 #'@export
 #'@import ggplot2 reshape2 plyr
-AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2){
-  avg <- ldply(pop.list, function(x) AVGRatio(x$p.cor, x$selection.strength, num.cores = num.cores), .progress = 'text')
+AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2, x.axis = 'selection.strength'){
+  avg <- ldply(pop.list, function(x) AVGRatio(x$p.cor, x[x.axis], num.cores = num.cores), .progress = 'text')
   names(avg)[6] = "Avg_Ratio"
   if(modules){
     m.avg = melt(avg[,-c(2, 3, 6)], id.vars = c('.id', 'Selection_Strength'))
