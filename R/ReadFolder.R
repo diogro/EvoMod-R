@@ -26,19 +26,21 @@ ReadFolder  <- function(input.folder, n.traits = 10, sel.type, direct.sel = T){
   p.cov = CalcCovar(p.cor, p.var)
   g.cov = CalcCovar(g.cor, g.var)
   
+  aux.file = paste(input.folder, "pop.parameters.txt", sep="/")
+  parameters = scan(aux.file, character(), quiet = TRUE)
   if(direct.sel){
-    aux.file = paste(input.folder, "pop.parameters.txt", sep="/")
-    parameters = scan(aux.file, character(), quiet = TRUE)
     index = which("theta"==parameters)+2
     selection.strength = as.numeric(parameters[index])
-    index = which("Ne"==parameters)+2
-    n.e = as.numeric(parameters[index])
-    index = which("mu_b"==parameters)+2
-    mu_b = as.numeric(parameters[index])
   }
   else{
     selection.strength = 0.
   }
+  
+  index = which("Ne"==parameters)+2
+  n.e = as.numeric(parameters[index])
+  index = which("mu_b"==parameters)+2
+  mu.b = as.numeric(parameters[index])
+  
   out.list = list(p.cor = p.cor,
                   g.cor = g.cor,
                   p.var = p.var,
@@ -47,6 +49,8 @@ ReadFolder  <- function(input.folder, n.traits = 10, sel.type, direct.sel = T){
                   p.cov = p.cov,
                   g.cov = g.cov,
                   b.mat = b.mat,
+                  mu.b = mu_b,
+                  n.e = n.e,
                   selection.type = sel.type,
                   selection.strength = selection.strength,
                   generation = as.numeric(names(p.var)))
