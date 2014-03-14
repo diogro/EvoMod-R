@@ -36,9 +36,9 @@ ReadFolder  <- function(input.folder, n.traits = 10, sel.type, direct.sel = T){
     selection.strength = 0.
   }
   
-  index = which("Ne"==parameters)+2
+  index = which("N_e"==parameters)+2
   n.e = as.numeric(parameters[index])
-  index = which("mu_b"==parameters)+2
+  index = which("mu_B"==parameters)+2
   mu.b = as.numeric(parameters[index])
   
   out.list = list(p.cor = p.cor,
