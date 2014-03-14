@@ -2,9 +2,9 @@
 \alias{MapCalcR2}
 \title{CalcR2 wrapper}
 \usage{
-MapCalcR2(mat.list)
+  MapCalcR2(mat.list)
 }
 \description{
-Wrapper for the CalcR2 in a list
+  Wrapper for the CalcR2 in a list
 }
 

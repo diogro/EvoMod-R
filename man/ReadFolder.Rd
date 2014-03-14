@@ -2,10 +2,11 @@
 \alias{ReadFolder}
 \title{Read Folder}
 \usage{
-ReadFolder(input.folder, n.traits = 10, sel.type, direct.sel = T)
+  ReadFolder(input.folder, n.traits = 10, sel.type,
+    direct.sel = T)
 }
 \description{
-Read a single population folder and return a list with all
-poplation atributes
+  Read a single population folder and return a list with
+  all poplation atributes
 }
 
