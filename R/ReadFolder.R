@@ -18,7 +18,10 @@ ReadFolder  <- function(input.folder, n.traits = 10, sel.type, direct.sel = T){
   input.file = paste(input.folder, "phenotype.dat", sep = '/')
   phenotype = ReadVariances(input.file, n.traits)
   input.file = paste(input.folder, "b.mat.dat", sep = '/')
-  b.mat = ReadBMat(input.file, n.traits, n.loci = 2*500)
+  if(file.exists(input.file))
+    b.mat = ReadBMat(input.file, n.traits, n.loci = 2*500)
+  else
+    b.mat = NULL
                    
   p.cov = CalcCovar(p.cor, p.var)
   g.cov = CalcCovar(g.cor, g.var)
@@ -28,6 +31,10 @@ ReadFolder  <- function(input.folder, n.traits = 10, sel.type, direct.sel = T){
     parameters = scan(aux.file, character(), quiet = TRUE)
     index = which("theta"==parameters)+2
     selection.strength = as.numeric(parameters[index])
+    index = which("Ne"==parameters)+2
+    n.e = as.numeric(parameters[index])
+    index = which("mu_b"==parameters)+2
+    mu_b = as.numeric(parameters[index])
   }
   else{
     selection.strength = 0.
