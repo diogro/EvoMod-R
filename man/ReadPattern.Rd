@@ -6,6 +6,6 @@
     direct.sel = T)
 }
 \description{
-  Read Pattern from directory
+  Read many populations from a folder using a pattern
 }
 
