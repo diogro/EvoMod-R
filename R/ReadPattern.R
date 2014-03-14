@@ -1,5 +1,6 @@
 #'Read Pattern from directory
 #'
+#'@export
 #'Read many populations from a folder using a pattern
 ReadPattern <- function(pattern,
                         n.traits = 10,
