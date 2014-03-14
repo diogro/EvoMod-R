@@ -49,7 +49,7 @@ ReadFolder  <- function(input.folder, n.traits = 10, sel.type, direct.sel = T){
                   p.cov = p.cov,
                   g.cov = g.cov,
                   b.mat = b.mat,
-                  mu.b = mu_b,
+                  mu.b = mu.b,
                   n.e = n.e,
                   selection.type = sel.type,
                   selection.strength = selection.strength,
