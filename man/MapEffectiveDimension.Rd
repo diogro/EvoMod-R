@@ -2,9 +2,9 @@
 \alias{MapEffectiveDimension}
 \title{Effective dimenson wrapper}
 \usage{
-  MapEffectiveDimension(mat.list)
+MapEffectiveDimension(mat.list)
 }
 \description{
-  Wrapper to calculate effective dimension in a list
+Wrapper to calculate effective dimension in a list
 }
 

@@ -2,10 +2,9 @@
 \alias{ReadPattern}
 \title{Read Pattern from directory}
 \usage{
-  ReadPattern(pattern, n.traits = 10, sel.type,
-    direct.sel = T)
+ReadPattern(pattern, n.traits = 10, sel.type, direct.sel = T)
 }
 \description{
-  Read many populations from a folder using a pattern
+Read many populations from a folder using a pattern
 }
 
