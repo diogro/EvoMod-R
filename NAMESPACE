@@ -1,5 +1,6 @@
 export(AVGRatio)
 export(AVGRatioPlot)
+export(AVGRatioSimple)
 export(CalcCorrOmega)
 export(CalcCovar)
 export(CalcIsoStat)
