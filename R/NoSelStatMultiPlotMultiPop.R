@@ -3,8 +3,8 @@
 #'Plots a time series of many populations statistics, averagin by genration and treatment
 #'@export
 NoSelStatMultiPlotMultiPop <- function(drift.list, stab.list, StatMap, y.axis, n.traits = 10){
-  data.drift <- laply(drift.list, function (x) StatMap(x$p.cov, 0))
-  data.stab <- laply(stab.list, function (x) StatMap(x$p.cov, 0))
+  data.drift <- laply(drift.list, function (x) StatMap(x$p.cov))
+  data.stab <- laply(stab.list, function (x) StatMap(x$p.cov))
   data.drift <- adply(data.drift, 2, function(x) c(mean(x), quantile(x, 0.025), quantile(x, 0.975)))
   data.stab <- adply(data.stab, 2, function(x) c(mean(x), quantile(x, 0.025), quantile(x, 0.975)))
   data.drift[,5] = rep("Drift", length(data.drift))
