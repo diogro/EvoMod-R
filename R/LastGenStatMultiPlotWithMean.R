@@ -8,8 +8,8 @@ LastGenStatMultiPlotWithMean  <- function(pop.list, StatMap, y.axis, n.traits = 
   n.pop = length(pop.list)
   data.avg = array(dim=c(n.pop, 3))
   for (pop in 1:n.pop){
-    direct.stat <- CalcIsoStatMap(list(pop.list[[pop]]$p.cov[[n.gen]]), StatMap)
-    mean.stat <- CalcMeanStatMap(list(pop.list[[pop]]$p.cov[[n.gen]]), StatMap)
+    direct.stat <- CalcIsoStat(list(pop.list[[pop]]$p.cov[[n.gen]]), StatMap)
+    mean.stat <- CalcMeanStat(list(pop.list[[pop]]$p.cov[[n.gen]]), StatMap)
     print(pop)
     lower = pop
     label.vector = as.numeric(pop.list[[pop]]$selection.strength)
