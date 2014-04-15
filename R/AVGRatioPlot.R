@@ -27,7 +27,7 @@ AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2, x.axis = 'se
     avg.plot = ggplot(avg.full, aes(Selection_Strength,
                                     Avg_Ratio,
                                     group = Selection_Strength)) + layer(geom="boxplot") +
-      labs(x="Selection Strength", y="AVG Ratio") + theme_bw()
+      labs(x="Peak Movement Rate", y="AVG Ratio") + theme_bw()
   }
   return(avg.plot)
 }

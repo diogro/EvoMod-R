@@ -21,6 +21,6 @@ LastGenStatMultiPlotWithMean  <- function(pop.list, StatMap, y.axis, n.traits = 
   names(data.avg) = c("Directional", "Mean", "Selection_Strength")
   data.avg = melt(data.avg, c("Selection_Strength"))
   time.series  <- ggplot(data.avg, aes(Selection_Strength, value, group=interaction(Selection_Strength, variable),color=variable)) +
-    layer(geom = "boxplot") + scale_y_continuous(y.axis) + scale_x_continuous("Selection Strength")
+    layer(geom = "boxplot") + scale_y_continuous(y.axis) + scale_x_continuous("Peak Movement Rate")
   return(time.series)
 }
