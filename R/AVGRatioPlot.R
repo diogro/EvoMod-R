@@ -3,7 +3,7 @@
 #'Plots AVGRatio output
 #'@export
 #'@import ggplot2 reshape2 plyr
-AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2, x.axis = 'selection.strength'){
+AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2, x.axis = 'selection.strength', x.label = 'Peak Movement Rate'){
   avg <- ldply(pop.list, function(x) AVGRatio(x$p.cor, x[[x.axis]], num.cores = num.cores), .progress = 'text')
   names(avg)[6] = "Avg_Ratio"
   if(modules){
@@ -15,7 +15,7 @@ AVGRatioPlot  <- function(pop.list, modules = FALSE, num.cores = 2, x.axis = 'se
                                  group=interaction(variable, Selection_Strength, .id),
                                  colour=interaction(.id, variable))) +
       layer(geom="boxplot") +
-      labs(x="Selection Strength",
+      labs(x=x.label,
            y="Average Correlation",
            color = "Module") +
       scale_colour_discrete(labels=c("Within Module 1",
