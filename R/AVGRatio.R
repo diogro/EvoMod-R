@@ -52,5 +52,6 @@ AVGRatioSimple <- function(mat.list, num.cores = 4){
     avg.ratio <- avg.plus / avg.minus
     return(avg.ratio)
   }
-  laply(mat.list, AVGRatioWrap, .parallel=parallel)
+  avg.ratio = laply(mat.list, AVGRatioWrap, .parallel=parallel)
+  return(avg.ratio)
 }
