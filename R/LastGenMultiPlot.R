@@ -18,6 +18,6 @@ LastGenStatMultiPlot  <- function(pop.list, StatMap, y.axis, n.traits = 10){
   data.avg = data.frame(as.numeric(data.avg[,1]), as.numeric(data.avg[,2]))
   names(data.avg) = c("stat", "Selection_Strength")
   time.series  <- ggplot(data.avg, aes(Selection_Strength, stat, group = Selection_Strength)) +
-    layer(geom = "boxplot") + scale_y_continuous(y.axis) + scale_x_continuous("Selection Strength")
+    layer(geom = "boxplot") + scale_y_continuous(y.axis) + scale_x_continuous("Peak Movement Rate")
   return(time.series)
 }
