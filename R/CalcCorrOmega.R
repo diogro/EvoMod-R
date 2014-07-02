@@ -17,7 +17,7 @@ CalcCorrOmega <- function(mat.list, omega){
 CalcCorrOmegaKrz <- function(mat.list, omega){
   n.traits = dim(mat.list[[1]])[1]
   omega = as.matrix(read.table ("input/omega.csv", header=F, sep=' '))[1:n.traits, 1:n.traits]
-  corr.omega <- lapply(mat.list, function(x) KrzCor(x, omega, ret.dim = 3))
+  corr.omega <- lapply(mat.list, function(x) KrzCor(x, omega, ret.dim = 2))
   return(unlist(corr.omega))
 }
 
@@ -55,4 +55,15 @@ CalcCorrOmegaSecondEigen <- function(mat.list, omega){
   corr.omega <- lapply(mat.list, function(x) eigen(x)$vectors[,2]%*%eVec_omega)
   return(unlist(corr.omega))
 }
+
+#'Caclulate Omega Correlation
+#'
+#'Calculates the fitness surface correlation with a list of matrices.
+#'@export
+EigenVar <- function(mat.list, n_eigen){
+  n.traits = dim(mat.list[[1]])[1]
+  corr.omega <- lapply(mat.list, function(x) eigen(x)$value[n_eigen]/sum(diag(x)))
+  return(unlist(corr.omega))
+}
+
 
