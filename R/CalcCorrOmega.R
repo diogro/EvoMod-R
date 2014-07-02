@@ -17,7 +17,7 @@ CalcCorrOmega <- function(mat.list, omega){
 CalcCorrOmegaKrz <- function(mat.list, omega){
   n.traits = dim(mat.list[[1]])[1]
   omega = as.matrix(read.table ("input/omega.csv", header=F, sep=' '))[1:n.traits, 1:n.traits]
-  corr.omega <- lapply(mat.list, function(x) KrzCor(x, omega, ret.dim = 2))
+  corr.omega <- lapply(mat.list, function(x) KrzCor(x, omega, ret.dim = 3))
   return(unlist(corr.omega))
 }
 
