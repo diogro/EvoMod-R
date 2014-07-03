@@ -39,11 +39,11 @@ CalcCorrOmegaRS <- function(mat.list, omega){
 CalcCorrOmegaEigenVector <- function(mat.list){
   n.traits = dim(mat.list[[1]])[1]
   omega = as.matrix(read.table ("input/omega.csv", header=F, sep=' '))[1:n.traits, 1:n.traits]
-  eVec_omega = eigen(omega)$vectors[,1]
+  eVec_omega = eigen(omega)$vectors
   corr.omega <- ldply(mat.list, function(x) {
     eVecs = eigen(x)$vectors
-    data.frame(PC1 = abs(eVecs[,1]%*%eVec_omega),
-               PC2 = abs(eVecs[,1]%*%eVec_omega))
+    data.frame(PC1 = abs(eVecs[,1]%*%eVec_omega[,1]),
+               PC2 = abs(eVecs[,2]%*%eVec_omega[,2]))
   })
   return(corr.omega)
 }
