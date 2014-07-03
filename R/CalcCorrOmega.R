@@ -62,7 +62,7 @@ CalcCorrOmegaSecondEigen <- function(mat.list, omega){
 #'@export
 EigenVar <- function(mat.list, n_eigen){
   n.traits = dim(mat.list[[1]])[1]
-  corr.omega <- lapply(mat.list, function(x) eigen(x)$value[n_eigen]/sum(diag(x)))
+  corr.omega <- ldply(mat.list, function(x) eigen(x)$value[1:n_eigen]/sum(diag(x)))
   return(unlist(corr.omega))
 }
 
