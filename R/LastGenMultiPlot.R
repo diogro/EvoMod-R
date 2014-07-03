@@ -38,7 +38,7 @@ LastGenMultiStatMultiPlot  <- function(pop.list, StatMap, y.axis, n.traits = 10)
     data.avg = rbind(data.avg, stat)
   }
   data.avg = reshape2::melt(data.avg, id.var = "Selection_Strength")
-  time.series  <- ggplot(data.avg, aes(Selection_Strength, value, group = Selection_Strength, color = variable)) +
+  time.series  <- ggplot(data.avg, aes(Selection_Strength, value, group = interaction(Selection_Strength, variable), color = variable)) +
     layer(geom = "boxplot") + scale_y_continuous(y.axis) + scale_x_continuous("Peak Movement Rate")
   return(time.series)
 }
