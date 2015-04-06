@@ -12,14 +12,15 @@ PlotCorrs = function(p.cor, generations = 1: length(p.cor)){
   m.avg = m.avg[!((m.avg['.id'] == "Full Integration") & (m.avg['variable'] == "AVG+")),]
   avg.plot = ggplot(m.avg, aes(generation,
                                value,
-                               group=interaction(variable, generation, .id),
-                               colour=interaction(.id, variable))) +
-    layer(geom="point") +
+                               group=interaction(variable, generation, .id))) +
+    geom_point(aes(shape = interaction(.id, variable), colour=interaction(.id, variable)), alpha = 0.65) + 
     labs(x="Generation",
-         y="Average Correlation",
-         color = "Module") +
-    scale_colour_discrete(labels=c("Within Module 1",
+         y="Average Correlation") +
+    scale_colour_discrete(name = "Module", labels=c("Within Module 1",
                                    "Within Module 2",
-                                   "Between Modules")) + theme_bw()
+                                   "Between Modules")) +
+    scale_shape_discrete(name = "Module", labels=c("Within Module 1",
+                                   "Within Module 2",
+                                   "Between Modules"), solid = FALSE) + theme_bw()
   return(avg.plot)
 }
