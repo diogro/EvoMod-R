@@ -9,19 +9,20 @@ ReadRawPop <- function(folder = "/home/diogro/projects/evomod/c-gsl/output/burn_
   m = as.numeric(raw_param[[9]])
   p = as.numeric(raw_param[[6]])
   rawPop <- array(scan(paste0(folder, "/pop.pop"), numeric()), dim = c(2*m, p+1, Ne))
-  x = t(apply(rawPop, 3, function(x) t(x[,-1]) %*% x[,1]))
-  B = rawPop[,-1,]
-  y = rawPop[,1,]
-  apply(B, 2, mean)
-  pop = list(y = y, 
-             B = B, 
-             x = x, 
+  names(rawPop) <- list(paste0(c("loci_1-", "loci_2-"), rep(1:m, each = 2)),
+                        c("y", paste0("trait", 1:p)),
+                        paste0("ind", 1:Ne))
+                      
+  pop = list(y = rawPop[,1,], 
+             B = rawPop[,-1,], 
+             x = (apply(rawPop, 3, function(x) t(x[,-1]) %*% x[,1])), 
              G = cov(x), 
              folder = folder, 
              Ne = Ne, 
              m = m, 
              p = p,
              label = label)
+  
   class(pop) = "sim_pop"
   return(pop)
 }
