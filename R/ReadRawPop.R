@@ -12,7 +12,7 @@ ReadRawPop <- function(folder = "/home/diogro/projects/evomod/c-gsl/output/burn_
   names(rawPop) <- list(paste0(c("loci_1-", "loci_2-"), rep(1:m, each = 2)),
                         c("y", paste0("trait", 1:p)),
                         paste0("ind", 1:Ne))
-  x <- (apply(rawPop, 3, function(x) t(x[,-1]) %*% x[,1]))          
+  x <- t(apply(rawPop, 3, function(x) t(x[,-1]) %*% x[,1]))          
   pop = list(y = rawPop[,1,], 
              B = rawPop[,-1,], 
              x = x, 
